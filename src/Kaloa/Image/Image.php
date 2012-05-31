@@ -75,7 +75,7 @@ class Image
                         $binary)):
                 $type = self::TYPE_TIFF;
                 break;
-            case (1 === preg_match('/\AFORM.{4}ILBM)/', $binary)):
+            case (1 === preg_match('/\AFORM.{4}ILBM/', $binary)):
                 /** TODO Find out what this is */
                 $type = self::TYPE_UNKNOWN;
                 break;
@@ -220,5 +220,12 @@ class Image
     public function setFactory(ImageFactory $factory)
     {
         $this->factory = $factory;
+    }
+
+    public function __clone()
+    {
+        if ($this->resource !== null) {
+            $this->createFromString($this->outputRaw());
+        }
     }
 }

@@ -6,8 +6,15 @@ use Kaloa\Image\Filter\FilterInterface;
 use Kaloa\Image\ImageException;
 use Kaloa\Image\ImageFactory;
 
+/**
+ *
+ */
 class Image
 {
+    /**
+     *
+     * @var resource
+     */
     protected $resource = null;
 
     const TYPE_UNKNOWN = 'application/octet-stream';
@@ -17,8 +24,16 @@ class Image
     const TYPE_BMP     = 'image/x-windows-bmp';
     const TYPE_TIFF    = 'image/tiff';
 
+    /**
+     *
+     * @var resource
+     */
     protected $mimeType = null;
 
+    /**
+     *
+     * @var ImageFactory
+     */
     protected $factory;
 
     /**

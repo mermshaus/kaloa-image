@@ -1,4 +1,4 @@
-Kaloa Component Library for PHP -- Image
+# Kaloa Component Library for PHP -- Image
 
 The software is published under the MIT License (see LICENSE).
 
@@ -12,8 +12,12 @@ better.
 
 Unit tests (run from project root directory):
 
-    $ phpunit .
+~~~ bash
+$ phpunit .
+~~~
 
 Other tools:
 
-    $ phpmd ./library text codesize,design,naming
+~~~ bash
+$ phpmd ./library text codesize,design,naming
+~~~

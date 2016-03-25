@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file is part of the kaloa/image package.
+ *
+ * For full copyright and license information, please view the LICENSE file
+ * that was distributed with this source code.
+ */
+
 namespace Kaloa\Image\Filter;
 
 use Kaloa\Image\Filter\AbstractFilter;
@@ -11,19 +18,19 @@ use Kaloa\Image\Image;
  * The class is modeled after java.awt.image.RescaleOp
  * <http://docs.oracle.com/javase/7/docs/api/java/awt/image/RescaleOp.html>
  */
-class RescaleOpFilter extends AbstractFilter
+final class RescaleOpFilter extends AbstractFilter
 {
     /**
      *
      * @var array (float[3])
      */
-    protected $scaleFactors;
+    private $scaleFactors;
 
     /**
      *
      * @var array (float[3])
      */
-    protected $offsets;
+    private $offsets;
 
     /**
      *
@@ -46,7 +53,7 @@ class RescaleOpFilter extends AbstractFilter
      * @param  resource $img GD image resource
      * @return resource GD image resource
      */
-    protected function loop($img)
+    private function loop($img)
     {
         // Cache already computed pixels
         $cache = array();

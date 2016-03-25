@@ -1,22 +1,27 @@
 <?php
 
+/*
+ * This file is part of the kaloa/image package.
+ *
+ * For full copyright and license information, please view the LICENSE file
+ * that was distributed with this source code.
+ */
+
 namespace Kaloa\Image;
 
-use Kaloa\Image\Image;
 use Kaloa\Image\Filter\FilterInterface;
-use Kaloa\Image\ImageException;
 use ReflectionClass;
 
 /**
  *
  */
-class ImageFactory
+final class ImageFactory
 {
     /**
      *
      * @var array Array of FilterInterface
      */
-    protected $filters = null;
+    private $filters = null;
 
     /**
      *
@@ -30,7 +35,7 @@ class ImageFactory
     /**
      *
      */
-    protected function rebuildFilters()
+    private function rebuildFilters()
     {
         $files = glob(__DIR__ . '/Filter/*Filter.php');
 
@@ -58,7 +63,7 @@ class ImageFactory
     public function _hasFilter($methodName)
     {
         // Lazy loading
-        if ($this->filters === null) {
+        if (null === $this->filters) {
             $this->rebuildFilters();
         }
 
@@ -75,7 +80,7 @@ class ImageFactory
     public function _getFilterInstance($methodName, $arguments)
     {
         // Lazy loading
-        if ($this->filters === null) {
+        if (null === $this->filters) {
             $this->rebuildFilters();
         }
 

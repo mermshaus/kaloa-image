@@ -1,15 +1,21 @@
 <?php
 
+/*
+ * This file is part of the kaloa/image package.
+ *
+ * For full copyright and license information, please view the LICENSE file
+ * that was distributed with this source code.
+ */
+
 namespace Kaloa\Image\Filter;
 
-use Kaloa\Image\Filter\AbstractFilter;
 use Kaloa\Image\Image;
 
-class ResizeFilter extends AbstractFilter
+final class ResizeFilter extends AbstractFilter
 {
-    protected $newWidth;
-    protected $newHeight;
-    protected $enlargeSmallImages;
+    private $newWidth;
+    private $newHeight;
+    private $enlargeSmallImages;
 
     /**
      *
@@ -27,7 +33,7 @@ class ResizeFilter extends AbstractFilter
      * @param resource $image
      * @return resource GD image resource
      */
-    protected function resize($image)
+    private function resize($image)
     {
         $maxWidth  = $this->newWidth;
         $maxHeight = $this->newHeight;

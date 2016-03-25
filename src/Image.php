@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file is part of the kaloa/image package.
+ *
+ * For full copyright and license information, please view the LICENSE file
+ * that was distributed with this source code.
+ */
+
 namespace Kaloa\Image;
 
 use Kaloa\Image\Filter\FilterInterface;
@@ -9,13 +16,13 @@ use Kaloa\Image\ImageFactory;
 /**
  *
  */
-class Image
+final class Image
 {
     /**
      *
      * @var resource
      */
-    protected $resource = null;
+    private $resource = null;
 
     const TYPE_UNKNOWN = 'application/octet-stream';
     const TYPE_JPEG    = 'image/jpeg';
@@ -28,13 +35,13 @@ class Image
      *
      * @var resource
      */
-    protected $mimeType = null;
+    private $mimeType = null;
 
     /**
      *
      * @var ImageFactory
      */
-    protected $factory;
+    private $factory;
 
     /**
      *
@@ -58,7 +65,7 @@ class Image
         return $this;
     }
 
-    protected function create($resource)
+    private function create($resource)
     {
         $this->resource = $resource;
     }
@@ -69,7 +76,7 @@ class Image
      * @param  string $binary
      * @return string TYPE_* constant
      */
-    protected function getMimeTypeFromBinary($binary)
+    private function getMimeTypeFromBinary($binary)
     {
         $type = self::TYPE_UNKNOWN;
 
@@ -237,9 +244,12 @@ class Image
         $this->factory = $factory;
     }
 
+    /**
+     *
+     */
     public function __clone()
     {
-        if ($this->resource !== null) {
+        if (null !== $this->resource) {
             $this->createFromString($this->outputRaw());
         }
     }

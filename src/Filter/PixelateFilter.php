@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file is part of the kaloa/image package.
+ *
+ * For full copyright and license information, please view the LICENSE file
+ * that was distributed with this source code.
+ */
+
 namespace Kaloa\Image\Filter;
 
 use Kaloa\Image\Filter\AbstractFilter;
@@ -7,8 +14,8 @@ use Kaloa\Image\Image;
 
 class PixelateFilter extends AbstractFilter
 {
-    protected $blockSize;
-    protected $useAdvancedMode;
+    private $blockSize;
+    private $useAdvancedMode;
 
     public function __construct($blockSize, $useAdvancedMode = false)
     {
